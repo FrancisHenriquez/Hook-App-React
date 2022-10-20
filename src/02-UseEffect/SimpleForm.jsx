@@ -11,6 +11,7 @@ export const SimpleForm = () => {
  const onInputChange = ( { target } ) => {
   const { name , value } = target;
   console.log( name , value)
+
  setFormState({
     ...formState,
     [name]: value
@@ -20,7 +21,13 @@ export const SimpleForm = () => {
 
  useEffect ( () => {
   console.log(' useEffect called ')
- })
+ }, [])
+ useEffect ( () => {
+  console.log(' formState called ')
+ }, [ formState ])
+ useEffect ( () => {
+  console.log(' email changed !')
+ }, [ email ])
 
   return (
     <>
@@ -41,9 +48,6 @@ export const SimpleForm = () => {
     value={ email }
     onChange = { onInputChange }
     />
-    
-    
     </>
-
   )
 }
