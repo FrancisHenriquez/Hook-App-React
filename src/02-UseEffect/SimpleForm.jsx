@@ -35,7 +35,7 @@ export const SimpleForm = () => {
     <h1>Simple Form</h1>
     <hr />
     <input type="text"
-    className="fomr-control"
+    className="form-control mt-2"
     placeholder="Username"
     name="Username" 
     value={username}
