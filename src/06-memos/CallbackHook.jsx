@@ -7,11 +7,10 @@ export const CallbackHook = () => {
 
     const incremenFather =   useCallback(
       () => {
-        setCounter ( counter + 1)
+        setCounter ( (value ) => value + 1 )
       },
       [],
     )
-    
     // const incremenFather = () => {
     //     setCounter ( counter + 1)
     // }
