@@ -14,9 +14,10 @@ import { FormWithCustomHook } from './02-UseEffect/FormWithCustomHook'
 // import { CounterApp } from './01-useState/CounterApp'
 // import { HooksApp } from './HooksApp'
 import './index.css'
+import './08-useReducer/intro-reducer'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
-    <FormWithCustomHook/>
-  //  </React.StrictMode>
-)
+// ReactDOM.createRoot(document.getElementById('root')).render(
+//   // <React.StrictMode>
+//     <FormWithCustomHook/>
+//   //  </React.StrictMode>
+// )
