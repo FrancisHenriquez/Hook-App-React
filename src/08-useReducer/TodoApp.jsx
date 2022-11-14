@@ -1,23 +1,34 @@
+import { useEffect } from "react"
 import { useReducer } from "react"
+import { TodoAdd } from "./TodoAdd"
+import { TodoItem } from "./TodoItem"
+import { TodoList } from "./TodoList"
 import { todoReducer } from "./todoReducer"
 
 const initialState = [
-    {
-        id: new Date().getTime(),
-        description: 'Recolectar piedra del Alma',
-        done: false,
-    },
-    {
-        id: new Date().getTime() * 3,
-        description: 'Recolectar piedra del Alma',
-        done: false,
-    }
+    // {
+    //     id: new Date().getTime(),
+    //     description: 'Recolectar piedra del Alma',
+    //     done: false,
+    // },
+  
 ]
 
 export const TodoApp = () => {
-    const [state, dispatch] = useReducer( todoReducer, initialState,)
+    const [todos, dispatch] = useReducer( todoReducer, initialState,);
+    useEffect(() => {
+        localStorage.setItem('todos')
+        
+    }, [ todos ])
+    
+
     const handleNewTodo = ( todo ) => {
-        console.log({ todo });
+        const action = {
+            type: 'Add Todo',
+            payload: todo
+           }
+           dispatch( action );
+          
     }
   return (
 <>
@@ -27,14 +38,18 @@ export const TodoApp = () => {
 <div className="row">
     <div className="col-7">
         {/* TodoList  */}
+        <TodoList todos={ todos } />
+
+
     <ul className="list-group">
         {
             todos.map (todo => (
                 //TodoItem ...
-                <li className="list-group-item d-flex justify-content-between">
-            <span className="aling-self-center">Item 1</span>
-            <button className="btn btn-danger"> Borrar </button>
-            </li>
+                <TodoItem />
+            //     <li className="list-group-item d-flex justify-content-between">
+            // <span className="aling-self-center">Item 1</span>
+            // <button className="btn btn-danger"> Borrar </button>
+            // </li>
             ) )
             }
     </ul>
@@ -43,7 +58,9 @@ export const TodoApp = () => {
     <div className="col-5">
         <h4>Agregar TODO</h4>
         <hr />
-        <form action="">
+
+        <TodoAdd onNewtodo={ handleNewTodo( ) }/>
+        {/* <form action="">
             <input 
                 type="text" 
                 placeholder="Que hay que hacer?"
@@ -52,7 +69,7 @@ export const TodoApp = () => {
                 className="btn btn-outline-primary mt-1">
                     Agregar
                 </button>
-        </form>
+        </form> */}
     </div>
 
 </div>
