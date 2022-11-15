@@ -18,9 +18,9 @@ export const FormWithCustomHook = () => {
     <hr />
 
     <input type="text"
-    className="form-control mt-2"
+    className="form-control"
     placeholder="Username"
-    name="Username" 
+    name="username" 
     value={username}
     onChange = { onInputChange }/>
 

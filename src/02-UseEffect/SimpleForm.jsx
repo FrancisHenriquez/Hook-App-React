@@ -50,7 +50,7 @@ export const SimpleForm = () => {
     onChange = { onInputChange }
     />
 {
-  (email === 'LordConfle@dragonball.com' && <Message/> )
+  (username === 'LordConfle' && <Message/> )
 }
     </>
   )
