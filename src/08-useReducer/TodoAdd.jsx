@@ -1,36 +1,44 @@
-import { UseForm } from "../Hooks/UseForm"
+import { useForm } from '../hooks/useForm';
 
-export const TodoAdd = ({ onNewtodo }) => {
-     const { description, onInputChange, onResetForm } = UseForm ({
-        description: ' '
-     })
-     const onFormSubmit = ( event ) => {
-        event.preventDeafoult();
-        if ( description.length <= 1) return;
+
+export const TodoAdd = ({ onNewTodo }) => {
+
+    const { description, onInputChange, onResetForm } = useForm({
+        description: ''
+    });
+
+    const onFormSubmit = ( event ) => {
+        event.preventDefault();
+        if ( description.length <= 1 ) return;
 
         const newTodo = {
             id: new Date().getTime(),
-           description: description,
             done: false,
+            description: description,
         }
-         onNewtodo( newTodo );
-         onResetForm();
-     }
-  return (
-   <>
-   < form onSubmit={ onFormSubmit }>
+
+        onNewTodo(newTodo);
+        onResetForm();
+    }
+
+
+    return (
+        <form onSubmit={ onFormSubmit }>
             <input 
                 type="text" 
-                placeholder="Que hay que hacer?"
+                placeholder="¿Qué hay que hacer?"
                 className="form-control"
+                name="description"
                 value={ description }
-                onChange= { onInputChange}
-                />
-            <button type="submit"
-                className="btn btn-outline-primary mt-1">
-                    Agregar
-                </button>
+                onChange={ onInputChange }
+            />
+
+            <button 
+                type="submit"
+                className="btn btn-outline-primary mt-1"
+            >
+                Agregar
+            </button>
         </form>
-   </>
-  )
+    )
 }
